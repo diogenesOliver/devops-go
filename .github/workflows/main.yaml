@@ -26,5 +26,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build docker image
-        run: docker build -t diogenesoliver/nlw-journey-go:${{ steps.generate_sha.outputs.sha }} .
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            diogenesoliver/nlw-journey-go:${{ steps.generate_sha.outputs.sha }}
+            diogenesoliver/nlw-journey-go:latest
