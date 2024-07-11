@@ -27,4 +27,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build docker image
-        run: docker build -t diogenesoliver/nlw-journey-go:${{ steps.generate_sha.outputs.sha }} .\
+        run: docker build -t diogenesoliver/nlw-journey-go:${{ steps.generate_sha.outputs.sha }} .
